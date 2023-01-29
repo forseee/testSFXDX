@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useConnectWallet, useSetChain, useWallets } from "@web3-onboard/react";
+import {
+  useConnectWallet,
+  useSetChain,
+  useWallets,
+} from "@web3-onboard/react";
 
 import Button from "src/components/Button";
 import ConnectView from "src/components/ConnectView/ConnectView";
@@ -10,7 +14,7 @@ export type Account = {
 };
 
 export const ConnectWallet = () => {
-  const [{ wallet, connecting }, connect] = useConnectWallet();
+  const [{ wallet }, connect] = useConnectWallet();
   const [account, setAccount] = useState<Account | null>(null);
   const connectedWallets = useWallets();
   const [{ connectedChain }] = useSetChain();
@@ -22,7 +26,7 @@ export const ConnectWallet = () => {
   );
 
   useEffect(() => {
-    if (wallet?.provider) {
+    if (wallet?.accounts) {
       setAccount({
         address: wallet.accounts[0].address,
       });
@@ -60,12 +64,5 @@ export const ConnectWallet = () => {
     );
   }
 
-  return (
-    <Button
-      disabled={connecting}
-      onClick={() => connect()}
-    >
-      Connect Wallet
-    </Button>
-  );
+  return <Button onClick={() => connect()}>Connect Wallet</Button>;
 };

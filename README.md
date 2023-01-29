@@ -1,11 +1,11 @@
 # Project Title
 
-Text Work for SFXDX
+Test task for SFXDX
 
 
 ## About The App
 
-Project for access for you MetaMask wallet 
+Project for access to you MetaMask wallet 
 
 
 ## Technologies
